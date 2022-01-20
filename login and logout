@@ -1,0 +1,143 @@
+In home.html (home page)
+-----For logout--------- 
+{% if user.is_authenticated %}
+    <p style="color:red; font-family: Georgia; font-size:20px">Hello welcome,{{user.first_name}}</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+       <a href="#">Profile</a>
+       <a href="#">Mark Statements</a>
+       <a href="Staff">Staff Details</a>
+       <a href="#">Education Contents</a>
+       <a href="#">Videos</a>
+       <a href="logout"> logout </a>
+    {% else %}
+
+       <a href="Staff">Staff Details</a>
+       <a href="#">Education Contents</a>
+       <a href="#">Videos</a>
+       <a href="register">Register</a>
+       <a href="login"> login </a>
+    {% endif %}
+   
+   
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+in views.py
+
+def login(request):
+    return render(request, 'login.html')
+    
+    
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------login page--------------------------------------------------- 
+
+
+{% load static %}
+
+<html>
+<head>
+    <title>Login</title>
+
+   <marquee><h1  style="font-family: Georgia  ; font-size:40px; text-align:center;">Data Science Login Portal</h1></marquee>
+<script type="text/javascript">
+
+</script>
+</head>
+
+<body>
+
+
+</br>
+<form style="font-size: 20px"    action="login" method="post">
+    {% csrf_token %}
+
+    <p style="font-size: 40px; text-align: center;">LOGIN</p>
+    <center>
+
+        D.no &nbsp &nbsp &nbsp &nbsp &nbsp<input type="text" placeholder="Enter D.No" name="username"></br></br>
+       </br>
+        Password &nbsp <input type="password" placeholder="Enter Password" name="password"></br></br>
+        {% for message in messages %}
+         <h2 style="align:center; color: red;"> {{message}}</h2>
+         {% endfor %}
+        <input type="submit">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+
+    </center>
+    <style>
+/* Style all input fields */
+input {
+  width: 30%;
+
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+
+}
+
+
+ /*Style the input box */
+input[type=text]:focus {
+   background-color: lightblue;
+   }
+input[type=password]:focus {
+   background-color: lightblue;
+   }
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10006;";
+}
+body{
+background-image:url("{% static 'img/login.jpg' %}");
+background-size:2000px 1000px;
+width:100%;
+height:100%;
+
+}
+form{
+  border: 3px solid black;
+  border-radius: 30px;
+background-color: white;
+opacity:0.9;
+
+width: 40%;
+position: centered;
+top: 50%;
+text-align: center;
+margin:auto;
+}
+</style>
+</center>
+</form>
+
+</body>
+<html>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
